@@ -2,17 +2,11 @@
 const multer = require("multer"); //จัดการการอัปโหลดไฟล์
 const path = require("path"); //จัดการ path หรือตำแหน่งที่อยู่ของไฟล์
 const fs = require("fs"); //จัดการไฟล์
-
+require("dotenv").config();
 //ใช้งาน Cloudinary
 const {v2: Cloudinary} = require("cloudinary");
 const {CloudinaryStorage} = require("multer-storage-cloudinary");
 
-    // Configuration
-    Cloudinary.config({ 
-        cloud_name: 'dnaioi78p', 
-        api_key: '828897737692572', 
-        api_secret: '<86efiLuSQFb8ZgUoPCvPN4qNn4I>' // Click 'View API Keys' above to copy your API secret
-    });
 
 //ใช้ Prisma ในการทำงานกับฐานข้อมูล CRUD
 const { PrismaClient } = require("@prisma/client")

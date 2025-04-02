@@ -13,26 +13,20 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model traveller_tb {
-  travellerId        Int     @id @default(autoincrement())
-  travellerFullname  String  @db.VarChar(100)
-  travellerEmail     String  @db.VarChar(50)
-  travellerPassword  String  @db.VarChar(50)
-  travellerImage     String  @db.VarChar(150)
-
-  // เชื่อมกับ travel_tb
-  travels            travel_tb[]
+model traveller_tb{
+  travellerId         Int       @id  @default(autoincrement())
+  travellerFullname   String    @db.VarChar(100)
+  travellerEmail      String    @db.VarChar(50)
+  travellerPassword   String    @db.VarChar(50)
+  travellerImage      String    @db.VarChar(150)
 }
 
-model travel_tb {
-  travelId          Int     @id @default(autoincrement())
-  travellerId       Int
-  travelPlace       String  @db.VarChar(200)
-  travelStartDate   String  @db.VarChar(30)
-  travelEndDate     String  @db.VarChar(30)
-  travelCostTotal   Float
-  travelImage       String  @db.VarChar(150)
-
-  // เชื่อมกับ traveller_tb
-  traveller        traveller_tb @relation(fields: [travellerId], references: [travellerId], onDelete: Cascade)
+model travel_tb{
+  travelId            Int       @id  @default(autoincrement())
+  travellerId         Int
+  travelPlace         String    @db.VarChar(200)
+  travelStartDate     String    @db.VarChar(30)
+  travelEndDate       String    @db.VarChar(30)
+  travelCostTotal     Float
+  travelImage         String    @db.VarChar(150)
 }
